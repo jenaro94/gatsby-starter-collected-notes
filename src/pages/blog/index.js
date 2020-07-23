@@ -29,7 +29,10 @@ function Blog({ location }) {
           notes.nodes &&
           notes.nodes.map(note => (
             <li key={note.path}>
-              <Link to={`/blog/${note.path}`}>{note.title}</Link>
+              <p>
+                {note.title} |{" "}
+                <Link to={`/blog/${note.path}`}>Read more &rarr;</Link>
+              </p>
             </li>
           ))}
       </ul>
