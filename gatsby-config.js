@@ -5,13 +5,18 @@
  */
 
 module.exports = {
-  /* Your site config here */
+  siteMetadata: {
+    title: `Gatsby Collected Notes Starter`,
+    description: `Use Collected Notes as a CMS and Gatsby to add your own mark.`,
+    author: `@jenaroc`,
+  },
   plugins: [
     {
       resolve: `gatsby-source-collected-notes`,
       options: {
-        notesOwner: 'jenaro'
-      }
-    }
+        notesOwner: "jenaro",
+      },
+    },
+    `gatsby-plugin-react-helmet`,
   ],
 }

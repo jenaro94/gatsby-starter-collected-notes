@@ -1,6 +1,8 @@
 import React from "react"
 import ReactMarkdown from "react-markdown"
 import { graphql } from "gatsby"
+import Layout from "../components/Layout"
+import SEO from "../components/SEO"
 
 export const query = graphql`
   query NoteQuery($pagePath: String!) {
@@ -22,14 +24,15 @@ export const query = graphql`
   }
 `
 
-const BlogPost = ({ data }) => {
+const BlogPost = ({ data, location }) => {
   if (!data) return null
 
   const note = data.collectedNote
   return (
-    <div>
+    <Layout pathname={location.pathname}>
+      <SEO description={note.headline} title={note.title} bodyClass="post" />
       <ReactMarkdown source={note.body} />
-    </div>
+    </Layout>
   )
 }
 

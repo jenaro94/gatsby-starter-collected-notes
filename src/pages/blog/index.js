@@ -1,7 +1,9 @@
 import React from "react"
 import { useStaticQuery, graphql, Link } from "gatsby"
+import SEO from "../../components/SEO"
+import Layout from "../../components/Layout"
 
-function Blog() {
+function Blog({ location }) {
   const data = useStaticQuery(graphql`
     query AllNotes {
       allCollectedNote {
@@ -16,7 +18,12 @@ function Blog() {
   const notes = data.allCollectedNote
 
   return (
-    <div className="container">
+    <Layout pathname={location.pathname}>
+      <SEO
+        description="Here I write about stuff I learn"
+        title="My Blog!"
+        bodyClass="post"
+      />
       <ul>
         {notes &&
           notes.nodes &&
@@ -26,7 +33,7 @@ function Blog() {
             </li>
           ))}
       </ul>
-    </div>
+    </Layout>
   )
 }
 
